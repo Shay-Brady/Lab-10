@@ -13,7 +13,7 @@ public class Lab10 {
     }
 
     public static void Q1() {
-        //Removed a while true as it didn't serve a purpose
+        while (true){
             System.out.println("Pick a shape: square, rectangle, circle (or 'q' to quit)");
             String input = scan.nextLine();
             if (input.equals("q")) {
@@ -45,7 +45,7 @@ public class Lab10 {
                 System.out.println("The circumference of the circle is: " + (2 * Math.PI * r));
                 System.out.println("The area of the circle is: " + (Math.PI * r * r));
             }
-        
+        }
     }
 
     public static void Q2() {
