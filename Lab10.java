@@ -47,9 +47,9 @@ public class Lab10 {
 
     public static void Q2() {
         System.out.println("Q2: Enter the current day (1-31): ");
-        int num = Integer.parseInt(scan.nextLine());
+        int num = scan.nextInt();
         System.out.println("Enter the current month: (1-12)");
-        int num2 = Integer.parseInt(scan.nextLine());
+        int num2 = scan.nextInt();
 
         if (num == 1)
             System.out.print("You selected 1st of ");
@@ -75,37 +75,37 @@ public class Lab10 {
                 System.out.println("January");
                 break;
             case 2:
-                System.out.println("January");
+                System.out.println("February");
                 break;
             case 3:
-                System.out.println("January");
+                System.out.println("March");
                 break;
             case 4:
-                System.out.println("January");
+                System.out.println("April");
                 break;
             case 5:
-                System.out.println("January");
+                System.out.println("May");
                 break;
             case 6:
-                System.out.println("January");
+                System.out.println("June");
                 break;
             case 7:
-                System.out.println("January");
+                System.out.println("July");
                 break;
             case 8:
-                System.out.println("January");
+                System.out.println("August");
                 break;
             case 9:
-                System.out.println("January");
+                System.out.println("September");
                 break;
             case 10:
-                System.out.println("January");
+                System.out.println("October");
                 break;
             case 11:
-                System.out.println("January");
+                System.out.println("November");
                 break;
             case 12:
-                System.out.println("January");
+                System.out.println("December");
                 break;
         }
     }
