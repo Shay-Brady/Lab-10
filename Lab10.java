@@ -13,7 +13,7 @@ public class Lab10 {
     }
 
     public static void Q1() {
-        while (true) {
+        //Removed a while true as it didn't serve a purpose
             System.out.println("Pick a shape: square, rectangle, circle (or 'q' to quit)");
             String input = scan.nextLine();
             if (input.equals("q")) {
@@ -22,9 +22,11 @@ public class Lab10 {
 
             if (input.equals("square")) {
                 double a;
-                System.out.println("Enter the length of side a: ");
+                System.out.println("Enter the length of all sides: ");
                 a = Double.parseDouble(scan.nextLine());
-                System.out.println("The circumference of the square is: " + a * 4);
+                //Changed the terms of circumference of square and rectangle
+                //To perimeter
+                System.out.println("The perimeter of the square is: " + a * 4);
                 System.out.println("The area of the square is: " + a * a);
 
             } else if (input.equals("rectangle")) {
@@ -33,16 +35,17 @@ public class Lab10 {
                 a = Double.parseDouble(scan.nextLine());
                 System.out.println("Enter the length of side b: ");
                 b = Double.parseDouble(scan.nextLine());
-                System.out.println("The circumference of the rectangle is: " + (2 * a + 2 * b));
+                System.out.println("The perimeter of the rectangle is: " + (2 * a + 2 * b));
                 System.out.println("The area of the rectangle is: " + (a * b));
             } else if (input.equals("circle")) {
                 double r;
                 System.out.println("Enter the radius: ");
-                r = Double.parseDouble(scan.nextLine());
-                System.out.println("The circumference of the circle is: " + (Math.PI * r * 2));
+                //Changed turning a string to a double to reading a double
+                r = scan.nextDouble();
+                System.out.println("The circumference of the circle is: " + (2 * Math.PI * r));
                 System.out.println("The area of the circle is: " + (Math.PI * r * r));
             }
-        }
+        
     }
 
     public static void Q2() {
@@ -50,7 +53,8 @@ public class Lab10 {
         int num = scan.nextInt();
         System.out.println("Enter the current month: (1-12)");
         int num2 = scan.nextInt();
-
+        //Reduced the number of days down by taking in all the 
+        //Numbers that will have a "th" at the end
         if (num == 1)
             System.out.print("You selected 1st of ");
         else if (num == 2)
@@ -68,9 +72,8 @@ public class Lab10 {
         else {
             System.out.println("You selected " + num + "th of ");
         }
-
-        switch(num2)
-        {
+        //Made a switch insead of a block of if else
+        switch (num2) {
             case 1:
                 System.out.println("January");
                 break;
@@ -110,28 +113,32 @@ public class Lab10 {
         }
     }
 
-public static void Q3() {
-    System.out.println("Q3: Enter how many numbers you want to check for primality: ");
-    int n = Integer.parseInt(scan.nextLine());
-    int counter = 0;
-    for (int i = 0; i < n; i++) {
-    if (i < 2)
-    continue;
-    boolean check = true;
+    public static void Q3() {
+        //Question 3 was not indented correctly and would never run
+        //So I indented it in a way that makes it run like all the other questions
+        System.out.println("Q3: Enter how many numbers you want to check for primality: ");
+        int n = scan.nextInt();
+        //Changed from scanning and converting a string into integer
+        //To just scanning an integer
+        int counter = 0;
+        for (int i = 0; i < n; i++) {
+            if (i < 2)
+                continue;
+            boolean check = true;
 
-    for (int j = 2; j * j <= i; j++) {
-    if (i % j == 0) {
-    check = false;
-    break;
-    } else {
+            for (int j = 2; j * j <= i; j++) {
+                if (i % j == 0) {
+                    check = false;
+                    break;
+                } else {
 
-    }
-    }
-        if (check == true) {
-        counter++;
-        } 
-        else {}
-    }
+                }
+            }
+            if (check == true) {
+                counter++;
+            } else {
+            }
+        }
 
         System.out.println("There are: " + counter + " primes between 0 and " + n);
     }
@@ -140,8 +147,10 @@ public static void Q3() {
         Random rng = new Random();
 
         String next;
-        System.out.println("Q4: Let's play a game. Type \"A\" to attack, \"B\" to buff your next attack. Kill the enemy to win!");
-        System.out.println("Q4: You must roll higher than the enemy armor class (12) to hit. Roll 20 for a critical hit!");
+        System.out.println(
+                "Q4: Let's play a game. Type \"A\" to attack, \"B\" to buff your next attack. Kill the enemy to win!");
+        System.out.println(
+                "Q4: You must roll higher than the enemy armor class (12) to hit. Roll 20 for a critical hit!");
         System.out.println("Q4: Your damage is 2-16 (2d8)");
 
         int enemyHP = 100;
@@ -171,10 +180,12 @@ public static void Q3() {
 
             if (doAttack) {
                 a++;
-                int attackRoll = rng.nextInt(20) + 1;
+                int attackRoll = rng.nextInt(21); 
+                //I changed the random to have an upper limit of 21, yet not includin 21
+                //Rather than adding 1 onto every single roll, as this didn't make sense.
                 int damage = 0;
                 System.out.print("You rolled: " + attackRoll);
-                if(check) {
+                if (check) {
                     attackRoll += 5;
                     System.out.print(" + 5 (buff active)\n");
                 } else {
@@ -183,7 +194,7 @@ public static void Q3() {
                 if (attackRoll >= 12) {
                     damage = rng.nextInt(8) + 1;
                     damage += rng.nextInt(8) + 1;
-                    if(check) {
+                    if (check) {
                         damage += 5;
                     }
                     if (attackRoll == 20 || (check && attackRoll == 20 + 5)) {
@@ -191,7 +202,7 @@ public static void Q3() {
                         System.out.print("Critical hit! ");
                     }
                     System.out.print("You dealt " + damage + " damage");
-                    if(check) {
+                    if (check) {
                         System.out.print(" (buffed attack)");
                     }
                     enemyHP -= damage;
@@ -212,4 +223,3 @@ public static void Q3() {
         }
     }
 }
-
